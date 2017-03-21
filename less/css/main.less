@@ -1,0 +1,174 @@
+body{
+  background: #ffffff;
+}
+
+
+//变量
+@test_width:300px;
+.box {
+  width: @test_width;
+  height: @test_width;
+  background: yellow;
+  .border;
+}
+
+//混合
+.border{
+  border: solid 5px pink;
+}
+
+.box2{
+  .box;
+  margin-left: 100px;
+}
+//混合带参数
+.border_02(@a){
+  border:solid yellow @a;
+}
+test_hunhe{
+  .border_02(30px);
+}
+//混合 默认带值
+.border_03(@border_width:10px){
+  border:solid green @border_width;
+}
+test_hunhe_03{
+  .border_03(20px);
+}
+
+
+//混合例子
+.border_radius(@radius:5px){
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.radius_test{
+  width: 100px;
+  height: 40px;
+  background-color: green;
+  .border_radius();
+}
+
+//三角
+/*.sanjiao {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+
+  border-width: 10px;
+  border-color: transparent transparent red ;
+  border-style:dashed dashed solid dashed;
+}*/
+
+
+
+//匹配
+.triangle(top,@w:5px,@c:#ccc){
+  border-width:@w;
+  border-color: transparent transparent @c transparent;
+  border-style:dashed dashed solid dashed;
+}
+.triangle(bottom,@w:5px,@c:#ccc){
+  border-width:@w;
+  border-color: transparent @c transparent  transparent;
+  border-style:dashed solid dashed dashed;
+}
+.triangle(@_,@w:5px,@c:#ccc){
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.sanjiao {
+  .triangle(top,100px);
+}
+
+.pos(r){
+  position: relative;
+}
+.pos(a){
+  position: absolute;
+}
+.pos(f){
+  position: fixed;
+}
+
+.pipei{
+  width: 200px;
+  height: 200px;
+  background: green;
+  .pos(f);
+}
+
+@test_01:300px;
+
+.box_02{
+  width: @test_01 + 20;
+  color: #cccccc - 10;
+}
+
+//嵌套
+
+.list {
+  width: 600px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    height: 30px;
+    line-height: 30px;
+    background: pink;
+    margin-bottom:5px;
+    padding:0 10px;
+  }
+
+  a{
+    float: left;
+
+    &:hover{
+      color: red;
+    }
+  }
+
+  span{
+    float: right;
+  }
+}
+
+//arguments
+
+.border_arg(@w:30px,@c:red,@xx:solid){
+  border:@arguments;
+}
+
+.test_arguments{
+  .border_arg();
+}
+
+.user-info {
+  span.user-name {
+    width: 66px;
+    display: block;
+    line-height: 30px;
+    padding: 12px 0;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
